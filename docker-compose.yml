@@ -44,33 +44,6 @@ services:
       - sail
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping" ]
-
-  myapp-mysql-test:
-    image: mysql:8.0
-    container_name: app-mysql-test
-    # no volume mapping required since we dont need the data to persist after container is shut down
-    environment:
-      - MYSQL_ROOT_PASSWORD="${DB_PASSWORD}"
-      # upon container first run a database with the name of MYSQL_DATABASE setting will be created
-      - MYSQL_DATABASE="${DB_DATABASE}"
-      - MYSQL_USER="${DB_USERNAME}"
-      - MYSQL_PASSWORD="${DB_PASSWORD}"
-    ports:
-      # connect to the test server through port 3307 on localhost
-      - "3307:3306"
-    networks:
-      - sail
-  #TESTING DB
-  #    mysql_test:
-  #      image: "mysql:8.0"
-  #      environment:
-  #        MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
-  #        MYSQL_DATABASE: "${DB_DATABASE}"
-  #        MYSQL_USER: "${DB_USERNAME}"
-  #        MYSQL_PASSWORD: "${DB_PASSWORD}"
-  #        MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-  #      networks:
-  #        - sail
   #    pgsql:
   #        image: postgres:13
   #        ports:
