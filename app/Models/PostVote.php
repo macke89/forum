@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class PostVote extends Model
 {
     use HasFactory;
 
@@ -17,14 +17,8 @@ class Post extends Model
         $this->belongsTo(User::class);
     }
 
-    public function reports()
+    public function post()
     {
-        $this->hasMany(Report::class);
+        $this->belongsTo(Post::class);
     }
-
-    public function threads()
-    {
-        $this->belongsTo(Thread::class);
-    }
-
 }
