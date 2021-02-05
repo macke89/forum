@@ -22,7 +22,7 @@ class Post extends Model
         $this->hasMany(Report::class);
     }
 
-    public function threads()
+    public function thread()
     {
         $this->belongsTo(Thread::class);
     }
