@@ -17,6 +17,7 @@ class CreatePostVotesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('post_id')->constrained();
+//            $table->unique(['user_id', 'post_id']); // has to commented out for PostVoteFactory
             $table->integer('vote');
             $table->timestamps();
         });

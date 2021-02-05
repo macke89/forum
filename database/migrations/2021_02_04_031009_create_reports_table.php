@@ -17,8 +17,7 @@ class CreateReportsTable extends Migration
             $table->id();
             $table->foreignId('post_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->string('author_id');
-            $table->string('body');
+            $table->text('body');
             $table->timestamps();
         });
     }
