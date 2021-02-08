@@ -10,8 +10,9 @@
                 <a href="#" class="mr-5 text-sm font-semibold text-gray-600 hover:text-gray-800">Services</a>
                 <a href="#" class="mr-5 text-sm font-semibold text-gray-600 hover:text-gray-800">Now</a>
             </nav>
-            <div class="flex ml-auto">
-                <x-link-button link="login">Login</x-link-button>
+            <div class="flex ml-auto space-x-5">
+                <x-link-button link="login" style="full">Login</x-link-button>
+                <x-link-button link="register" style="light">Register</x-link-button>
             </div>
         </div>
     </header>
