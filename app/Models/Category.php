@@ -14,6 +14,6 @@ class Category extends Model
 
     public function threads()
     {
-        $this->hasMany(Thread::class);
+        return $this->hasMany(Thread::class);
     }
 }

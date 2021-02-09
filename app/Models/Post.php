@@ -14,17 +14,17 @@ class Post extends Model
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function reports()
     {
-        $this->hasMany(Report::class);
+        return $this->hasMany(Report::class);
     }
 
     public function thread()
     {
-        $this->belongsTo(Thread::class);
+        return $this->belongsTo(Thread::class);
     }
 
 }
