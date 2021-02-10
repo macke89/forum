@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PostSeeder::class);
         $this->call(PostVoteSeeder::class);
         $this->call(ReportSeeder::class);
-        Thread::factory(19)->create();
         Post::factory(90)->create();
+        Thread::factory(19)->create();
         PostVote::factory(300)->create();
         Report::factory(10)->create();
     }
