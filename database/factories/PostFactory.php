@@ -25,7 +25,7 @@ class PostFactory extends Factory
     {
         return [
             'thread_id' => Thread::all()->random()->id,
-            'user_id' => User::factory(),
+            'user_id' => User::all()->random()->id,
             'body' => $this->faker->text(500)
         ];
     }

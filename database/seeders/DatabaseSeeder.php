@@ -7,6 +7,7 @@ use App\Models\PostVote;
 use App\Models\Report;
 use App\Models\Thread;
 use Database\Factories\PostVoteFactory;
+use Database\Factories\UserFactory;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 
@@ -25,8 +26,9 @@ class DatabaseSeeder extends Seeder
         $this->call(PostSeeder::class);
         $this->call(PostVoteSeeder::class);
         $this->call(ReportSeeder::class);
+        User::factory(40)->create();
+        Thread::factory(20)->create();
         Post::factory(90)->create();
-        Thread::factory(19)->create();
         PostVote::factory(300)->create();
         Report::factory(10)->create();
     }
