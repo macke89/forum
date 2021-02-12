@@ -6,8 +6,6 @@ use App\Models\Post;
 use App\Models\PostVote;
 use App\Models\Report;
 use App\Models\Thread;
-use Database\Factories\PostVoteFactory;
-use Database\Factories\UserFactory;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 

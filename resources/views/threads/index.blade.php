@@ -1,23 +1,5 @@
 <x-guest-layout>
-    <header class="text-gray-700 bg-white border-t border-b body-font">
-        <div class="container flex flex-col flex-wrap p-5 mx-auto md:items-center md:flex-row ">
-            <a class="flex items-center w-40 mb-4 font-medium text-gray-900 title-font md:mb-0">
-                <img src="../badges/WhitePink.svg" alt="">
-            </a>
-            <nav class="flex flex-wrap items-center justify-center text-base ">
-                <a href="{{ route('index') }}"
-                   class="mr-5 text-m font-semibold text-blue-500 lg:ml-24 hover:text-blue-800">Forum</a>
-                <a href="#" class="mr-5 text-m font-semibold text-blue-500 hover:text-blue-800">Members</a>
-                <a href="#" class="mr-5 text-m font-semibold text-blue-500 hover:text-blue-800">Recent Posts</a>
-            </nav>
-            <div class="flex ml-auto space-x-5">
-                <x-link-button link="login" style="full">Login</x-link-button>
-                <x-link-button link="register" style="light">Register</x-link-button>
-            </div>
-        </div>
-    </header>
     <main class="container w-full m-4 mx-auto my-16 text-center flex flex-col p-3">
-
         <!-- This example requires Tailwind CSS v2.0+ -->
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
             {{--START CATEGORIES--}}
@@ -35,10 +17,13 @@
                     {{--START THREADS--}}
                     <tbody class="bg-white divide-y divide-gray-200">
                     @foreach($category->threads as $thread)
-                        <tr>
+                        <tr class="cursor-pointer hover:bg-blue-50 duration-300"
+                            onclick="location.href = 'thread/{{ $thread->id }}'">
                             <td class="px-6 py-4 whitespace-nowrap text-left">
+
                                 <div class="text-sm text-gray-900">{{ $thread->title }}</div>
                                 <div class="text-sm text-gray-500">{{ $thread->subtitle }}</div>
+
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
@@ -52,14 +37,13 @@
                                             {{ $thread->user->name }}
                                         </div>
                                         <div class="text-sm text-gray-500">
-                                            Posts: {{ $thread->user->posts->count() }}
+                                            Users Posts: {{ $thread->user->posts->count() }}
                                         </div>
                                     </div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                        <span
-                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                           Active
                                         </span>
                             </td>
@@ -67,10 +51,11 @@
                                 {{ $thread->user->role }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                Created: {{ $thread->created_at->diffForHumans() }}
+                                <br/>
+                                Last Answer: {{ $thread->posts->last()->created_at->diffForHumans() }}
                             </td>
                         </tr>
-
                     @endforeach
                     <!-- More items... -->
                     </tbody>

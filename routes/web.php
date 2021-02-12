@@ -15,6 +15,7 @@ use \App\Http\Controllers\ThreadController;
 */
 
 Route::get('/', [ThreadController::class, 'index'])->name('index');
+Route::resource('thread', ThreadController::class)->except('index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
