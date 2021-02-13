@@ -29,8 +29,13 @@
             <a href="#" class="mr-5 text-m font-semibold text-blue-500 hover:text-blue-800">Recent Posts</a>
         </nav>
         <div class="flex ml-auto space-x-5">
-            <x-link-button link="login" style="full">Login</x-link-button>
-            <x-link-button link="register" style="light">Register</x-link-button>
+            @auth()
+                <x-link-button link="dashboard" style="light">Dashboard</x-link-button>
+            @endauth
+            @guest()
+                <x-link-button link="login" style="full">Login</x-link-button>
+                <x-link-button link="register" style="light">Register</x-link-button>
+            @endguest
         </div>
     </div>
 </header>

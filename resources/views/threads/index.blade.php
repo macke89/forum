@@ -20,10 +20,8 @@
                         <tr class="cursor-pointer hover:bg-blue-50 duration-300"
                             onclick="location.href = 'thread/{{ $thread->id }}'">
                             <td class="px-6 py-4 whitespace-nowrap text-left">
-
                                 <div class="text-sm text-gray-900">{{ $thread->title }}</div>
                                 <div class="text-sm text-gray-500">{{ $thread->subtitle }}</div>
-
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
@@ -43,9 +41,10 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                          Active
-                                        </span>
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                  Active
+                                </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {{ $thread->user->role }}

@@ -27,11 +27,17 @@
                         {{ $post->body }}
                     </div>
                     <div class="flex bg-gray-100 pl-2 pr-2 justify-between">
-                        <x-link-button link="index" style="light">Send PM</x-link-button>
-                        <x-link-button link="index" style="red">Report</x-link-button>
+                        @auth()
+                            <x-link-button link="index" style="light">Send PM</x-link-button>
+                            <x-link-button link="index" style="red">Report</x-link-button>
+                        @endauth
                     </div>
                 </div>
             @endforeach
+            <div class="mb-3 pt-0">
+                <input type="text" placeholder="Placeholder"
+                       class="px-3 py-4 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-base shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+            </div>
         </div>
     </main>
 </x-guest-layout>
