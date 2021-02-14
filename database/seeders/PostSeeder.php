@@ -17,7 +17,7 @@ class PostSeeder extends Seeder
         Post::create([
             'thread_id' => '1',
             'user_id' => '1',
-            'body' => 'This here is a test Post. Please ignore. Nothing to see here.'
+            'body' => 'This here is a test Post.'
         ]);
     }
 }

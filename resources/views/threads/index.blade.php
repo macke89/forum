@@ -52,7 +52,12 @@
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 Created: {{ $thread->created_at->diffForHumans() }}
                                 <br/>
-                                Last Answer: {{ $thread->posts->last()->created_at->diffForHumans() }}
+                                Last Answer:
+                                @if($thread->posts->count() == 0)
+                                    None
+                                @else
+                                    {{ $thread->posts->last()->created_at->diffForHumans() }}
+                                @endif
                             </td>
                         </tr>
                     @endforeach

@@ -6,6 +6,9 @@
                 class="py-3 text-center text-l font-bold text-blue-600 uppercase tracking-wider m-auto bg-gradient-to-r from-blue-100 via-green-100 to-yellow-100">
                 {{ $thread->title }}
             </div>
+            <div class="container mx-auto mb-20 second:rounded-t-lg text-left">
+                {{ $thread->body }}
+            </div>
             @foreach($thread->posts as $post)
                 <div class="container mx-auto mb-20 second:rounded-t-lg">
                     <div class="w-full bg-gray-100 h-14 flex justify-between p-5 items-center">
@@ -35,9 +38,14 @@
                 </div>
             @endforeach
             <div class="mb-3 pt-0">
-                <input type="text" placeholder="Placeholder"
-                       class="px-3 py-4 placeholder-gray-400 text-gray-700 relative bg-white bg-white rounded text-base shadow outline-none focus:outline-none focus:shadow-outline w-full"/>
+                <textarea class="ckeditor form-control" name="wysiwyg-editor"></textarea>
             </div>
+            <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('.ckeditor').ckeditor();
+                });
+            </script>
         </div>
     </main>
 </x-guest-layout>
