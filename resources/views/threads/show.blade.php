@@ -3,11 +3,18 @@
         <!-- This example requires Tailwind CSS v2.0+ -->
         <div class="overflow-hidden">
             <div
-                class="py-3 text-center text-l font-bold text-blue-600 uppercase tracking-wider m-auto bg-gradient-to-r from-blue-100 via-green-100 to-yellow-100">
-                {{ $thread->title }}
+                class="py-3 flex justify-between items-center text-center text-l font-bold text-blue-600 uppercase tracking-wider m-auto bg-gradient-to-r from-blue-100 via-green-100 to-yellow-100">
+                <x-link-button link="index" style="light" class="ml-5">Send PM</x-link-button>
+                <div>{{ $thread->title }}</div>
+                <x-link-button link="index" style="red" class="mr-5">Report</x-link-button>
+
             </div>
-            <div class="container mx-auto mb-20 second:rounded-t-lg text-left">
+            <div class="container mx-auto p-5 second:rounded-t-lg text-left bg-gradient-to-r from-yellow-50 to-blue-50">
                 {{ $thread->body }}
+            </div>
+            <div class="flex bg-gray-100 pl-2 pr-2 justify-between p-2 mb-20">
+                <div class="ml-3"><b>Created: </b>{{ $thread->created_at->diffForHumans() }}</div>
+                <div class="mr-3"><b>Updated: </b>{{ $thread->updated_at->diffForHumans() }}</div>
             </div>
             @foreach($thread->posts as $post)
                 <div class="container mx-auto mb-20 second:rounded-t-lg">
@@ -23,23 +30,28 @@
                             Active
                         </span>
                         <div>
-                            {{ $post->created_at }}
+                            {{ $post->created_at->diffForHumans() }}
                         </div>
                     </div>
-                    <div class="bg-gradient-to-r from-gray-50 p-5 text-left">
-                        {{ $post->body }}
+                    <div class="bg-gradient-to-r from-yellow-50 to-blue-50 p-5 text-left">
+                        {!! $post->body !!}
                     </div>
                     <div class="flex bg-gray-100 pl-2 pr-2 justify-between">
                         @auth()
-                            <x-link-button link="index" style="light">Send PM</x-link-button>
-                            <x-link-button link="index" style="red">Report</x-link-button>
+                            <x-link-button link="index" style="light" class="m-3">Send PM</x-link-button>
+                            <x-link-button link="index" style="red" class="m-3">Report</x-link-button>
                         @endauth
                     </div>
                 </div>
             @endforeach
-            <div class="mb-3 pt-0">
-                <textarea class="ckeditor form-control" name="wysiwyg-editor"></textarea>
-            </div>
+
+            <form class="mb-3 pt-0" method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
+                @csrf
+                <label for="wysiwyg-editor">Answer</label>
+                <textarea class="ckeditor form-control" name="postBody"></textarea>
+                <button class="w-full justify-around mt-2 inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-600 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-300">Create Post</button>
+            </form>
+
             <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
             <script type="text/javascript">
                 $(document).ready(function () {

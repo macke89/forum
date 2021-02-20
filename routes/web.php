@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\ThreadController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,7 @@ use \App\Http\Controllers\ThreadController;
 
 Route::get('/', [ThreadController::class, 'index'])->name('index');
 Route::resource('thread', ThreadController::class)->except('index');
+Route::resource('post', PostController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

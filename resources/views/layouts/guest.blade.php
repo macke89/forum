@@ -33,8 +33,8 @@
                 <x-link-button link="dashboard" style="light">Dashboard</x-link-button>
             @endauth
             @guest()
-                <x-link-button link="login" style="full">Login</x-link-button>
-                <x-link-button link="register" style="light">Register</x-link-button>
+                <x-link-button link="login" style="full" class="m-3">Login</x-link-button>
+                <x-link-button link="register" style="light" class="m-3">Register</x-link-button>
             @endguest
         </div>
     </div>
