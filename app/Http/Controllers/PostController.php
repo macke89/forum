@@ -37,10 +37,12 @@ class PostController extends Controller
     public function store(Request $request)
     {
         Post::create([
-            'thread_id' => '10',
+            'thread_id' => $request->thread_id,
             'user_id' => Auth::user()->id,
             'body' => $request->postBody
         ]);
+
+        return view('threads.index');
     }
 
     /**
@@ -85,6 +87,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        return view('threads.index');
     }
 }

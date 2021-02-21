@@ -23,7 +23,10 @@
                             <img class="h-10 w-10 rounded-full mr-4"
                                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60"
                                  alt="">
-                            <div>{{ $post->user->name }}</div>
+                            <div>
+                                <div class="font-semibold m-0 p-0">{{ $post->user->name }}</div>
+                                <div class="text-left">{{ $post->user->role }}</div>
+                            </div>
                         </div>
                         <span
                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
@@ -39,7 +42,14 @@
                     <div class="flex bg-gray-100 pl-2 pr-2 justify-between">
                         @auth()
                             <x-link-button link="index" style="light" class="m-3">Send PM</x-link-button>
+                        <div class="flex">
+                            <form action="{{ route('post.destroy', $post) }}">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit">
+                            </form>
                             <x-link-button link="index" style="red" class="m-3">Report</x-link-button>
+                        </div>
                         @endauth
                     </div>
                 </div>
@@ -47,6 +57,7 @@
 
             <form class="mb-3 pt-0" method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" id="thread_id" name="thread_id" value="{{ $thread->id }}">
                 <label for="wysiwyg-editor">Answer</label>
                 <textarea class="ckeditor form-control" name="postBody"></textarea>
                 <button class="w-full justify-around mt-2 inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-600 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-300">Create Post</button>
