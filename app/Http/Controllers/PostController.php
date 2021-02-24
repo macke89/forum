@@ -42,7 +42,7 @@ class PostController extends Controller
             'body' => $request->postBody
         ]);
 
-        return view('threads.index');
+        return redirect()->route('thread.show', $request->thread_id);
     }
 
     /**

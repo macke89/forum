@@ -9,7 +9,7 @@
                 <x-link-button link="index" style="red" class="mr-5">Report</x-link-button>
 
             </div>
-            <div class="container mx-auto p-5 second:rounded-t-lg text-left bg-gradient-to-r from-yellow-50 to-blue-50">
+            <div class="container mx-auto p-5 second:rounded-t-lg text-left bg-gradient-to-r from-gray-50 to-blue-50">
                 {{ $thread->body }}
             </div>
             <div class="flex bg-gray-100 pl-2 pr-2 justify-between p-2 mb-20">
@@ -17,7 +17,7 @@
                 <div class="mr-3"><b>Updated: </b>{{ $thread->updated_at->diffForHumans() }}</div>
             </div>
             @foreach($thread->posts as $post)
-                <div class="container mx-auto mb-20 second:rounded-t-lg">
+                <div class="container mx-auto mb-10 second:rounded-t-lg">
                     <div class="w-full bg-gray-100 h-14 flex justify-between p-5 items-center">
                         <div class="flex justify-between items-center">
                             <img class="h-10 w-10 rounded-full mr-4"
@@ -36,33 +36,40 @@
                             {{ $post->created_at->diffForHumans() }}
                         </div>
                     </div>
-                    <div class="bg-gradient-to-r from-yellow-50 to-blue-50 p-5 text-left">
+                    <div class="bg-gradient-to-r from-gray-50 to-blue-50 p-5 text-left">
                         {!! $post->body !!}
                     </div>
                     <div class="flex bg-gray-100 pl-2 pr-2 justify-between">
                         @auth()
                             <x-link-button link="index" style="light" class="m-3">Send PM</x-link-button>
-                        <div class="flex">
-                            <form action="{{ route('post.destroy', $post) }}">
-                                @csrf
-                                @method('DELETE')
-                                <input type="submit">
-                            </form>
-                            <x-link-button link="index" style="red" class="m-3">Report</x-link-button>
-                        </div>
+{{--                            <x-link-button link="index" style="light" class="m-3">Update</x-link-button>--}}
+                            <div class="flex">
+                                <form class="m-3" action="{{ route('post.destroy', $post) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                            class="inline-flex items-center px-4 py-2 text-xs uppercase font-semibold border border-red-600 border-solid rounded text-red-600 bg-red-50 hover:bg-red-600 hover:text-white hover:border-red-600 hover:border-red-900 ease-in-out duration-300">
+                                        Delete
+                                    </button>
+                                </form>
+                                <x-link-button link="index" style="red" class="m-3">Report</x-link-button>
+                            </div>
                         @endauth
                     </div>
                 </div>
             @endforeach
-
-            <form class="mb-3 pt-0" method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
-                @csrf
-                <input type="hidden" id="thread_id" name="thread_id" value="{{ $thread->id }}">
-                <label for="wysiwyg-editor">Answer</label>
-                <textarea class="ckeditor form-control" name="postBody"></textarea>
-                <button class="w-full justify-around mt-2 inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-600 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-300">Create Post</button>
-            </form>
-
+            @auth()
+                <form class="mb-3 pt-0" method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" id="thread_id" name="thread_id" value="{{ $thread->id }}">
+                    <label for="wysiwyg-editor">Answer</label>
+                    <textarea class="ckeditor form-control" name="postBody"></textarea>
+                    <button
+                        class="w-full justify-around mt-2 inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-600 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-300">
+                        Create Post
+                    </button>
+                </form>
+            @endauth()
             <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
             <script type="text/javascript">
                 $(document).ready(function () {
