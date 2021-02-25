@@ -63,19 +63,13 @@
                     @csrf
                     <input type="hidden" id="thread_id" name="thread_id" value="{{ $thread->id }}">
                     <label for="wysiwyg-editor">Answer</label>
-                    <textarea class="ckeditor form-control" name="postBody"></textarea>
+                    <textarea class="form-control w-full" name="postBody" rows="10"></textarea>
                     <button
                         class="w-full justify-around mt-2 inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-600 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-300">
                         Create Post
                     </button>
                 </form>
             @endauth()
-            <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $('.ckeditor').ckeditor();
-                });
-            </script>
         </div>
     </main>
 </x-guest-layout>

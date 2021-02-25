@@ -16,6 +16,7 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', [ThreadController::class, 'index'])->name('index');
+
 Route::resource('thread', ThreadController::class)->except('index');
 Route::resource('post', PostController::class);
 
