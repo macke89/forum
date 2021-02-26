@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Thread;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -64,7 +65,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -76,7 +77,11 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->update([
+            'body' => $request->body
+        ]);
+        $thread = $post->thread;
+        return view('threads.show', compact('thread'));
     }
 
     /**
@@ -87,6 +92,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        return view('threads.index');
+        if ($post->user_id != auth()->id()) {
+            abort(403);
+        }
+        $post->delete();
+        $thread = $post->thread;
+        return view('threads.show', compact('thread'));
     }
 }
