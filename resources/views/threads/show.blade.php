@@ -4,10 +4,32 @@
         <div class="overflow-hidden">
             <div
                 class="py-3 flex justify-between items-center text-center text-l font-bold text-blue-600 uppercase tracking-wider m-auto bg-gradient-to-r from-blue-100 via-green-100 to-yellow-100">
-                <x-link-button link="index" style="light" class="ml-5">Send PM</x-link-button>
+                @auth()
+                    @if(auth()->id() == $thread->user_id)
+                        <a type="submit"
+                           href="{{ route('thread.edit', $thread) }}"
+                           class="m-3 inline-flex items-center px-4 py-2 text-xs uppercase font-semibold border border-blue-600 border-solid rounded text-blue-600 bg-blue-50 hover:bg-blue-600 hover:text-white hover:border-blue-600 hover:border-blue-900 ease-in-out duration-300">Edit</a>
+                    @else
+                        <x-link-button link="index" style="light" class="m-3">Send PM</x-link-button>
+                    @endif
+                @endauth
                 <div>{{ $thread->title }}</div>
-                <x-link-button link="index" style="red" class="mr-5">Report</x-link-button>
-
+                @auth()
+                    @if(auth()->id() == $thread->user_id)
+                        <form class="m-3" action="{{ route('thread.destroy', $thread) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                    class="inline-flex items-center px-4 py-2 text-xs uppercase font-semibold border border-red-600 border-solid rounded text-red-600 bg-red-50 hover:bg-red-600 hover:text-white hover:border-red-600 hover:border-red-900 ease-in-out duration-300"
+                                    value="delete"
+                                    onclick="return confirm('Are you sure?')">
+                                Delete
+                            </button>
+                        </form>
+                    @else
+                        <x-link-button link="index" style="red" class="mr-5">Report</x-link-button>
+                    @endif
+                @endauth
             </div>
             <div class="container mx-auto p-5 second:rounded-t-lg text-left bg-gradient-to-r from-gray-50 to-blue-50">
                 {{ $thread->body }}
@@ -41,18 +63,28 @@
                     </div>
                     <div class="flex bg-gray-100 pl-2 pr-2 justify-between">
                         @auth()
-                            <x-link-button link="index" style="light" class="m-3">Send PM</x-link-button>
-{{--                            <x-link-button link="index" style="light" class="m-3">Update</x-link-button>--}}
+                            @if(auth()->id() == $post->user_id)
+                                <a type="submit"
+                                   href="{{ route('post.edit', $post) }}"
+                                   class="m-3 inline-flex items-center px-4 py-2 text-xs uppercase font-semibold border border-blue-600 border-solid rounded text-blue-600 bg-blue-50 hover:bg-blue-600 hover:text-white hover:border-blue-600 hover:border-blue-900 ease-in-out duration-300">Edit</a>
+                            @else
+                                <x-link-button link="index" style="light" class="m-3">Send PM</x-link-button>
+                            @endif
                             <div class="flex">
-                                <form class="m-3" action="{{ route('post.destroy', $post) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                            class="inline-flex items-center px-4 py-2 text-xs uppercase font-semibold border border-red-600 border-solid rounded text-red-600 bg-red-50 hover:bg-red-600 hover:text-white hover:border-red-600 hover:border-red-900 ease-in-out duration-300">
-                                        Delete
-                                    </button>
-                                </form>
-                                <x-link-button link="index" style="red" class="m-3">Report</x-link-button>
+                                @if(auth()->id() == $post->user_id)
+                                    <form class="m-3" action="{{ route('post.destroy', $post) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                                class="inline-flex items-center px-4 py-2 text-xs uppercase font-semibold border border-red-600 border-solid rounded text-red-600 bg-red-50 hover:bg-red-600 hover:text-white hover:border-red-600 hover:border-red-900 ease-in-out duration-300"
+                                                value="delete"
+                                                onclick="return confirm('Are you sure?')">
+                                            Delete
+                                        </button>
+                                    </form>
+                                @else
+                                    <x-link-button link="index" style="red" class="m-3">Report</x-link-button>
+                                @endif
                             </div>
                         @endauth
                     </div>
