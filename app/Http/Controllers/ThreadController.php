@@ -16,6 +16,7 @@
          */
         public function index()
         {
+
             $categories = Category::all();
             $threads = Thread::all();
             return view('threads.index', compact('categories', 'threads'));
@@ -69,7 +70,7 @@
          */
         public function edit(Thread $thread)
         {
-            //
+            return view('threads.edit', compact('thread'));
         }
 
         /**
@@ -81,7 +82,11 @@
          */
         public function update(Request $request, Thread $thread)
         {
-            //
+            $thread->update([
+                'title' => $request->title,
+                'body' => $request->body
+            ]);
+            return view('threads.show', compact('thread'));
         }
 
         /**
