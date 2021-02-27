@@ -21,7 +21,6 @@
                             onclick="location.href = 'thread/{{ $thread->id }}'">
                             <td class="px-6 py-4 whitespace-nowrap text-left">
                                 <div class="text-sm text-gray-900">{{ $thread->title }}</div>
-                                <div class="text-sm text-gray-500">{{ $thread->subtitle }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
