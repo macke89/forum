@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\PostVote;
+use App\Models\Report;
 use App\Models\Thread;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -95,6 +97,13 @@ class PostController extends Controller
         if ($post->user_id != auth()->id()) {
             abort(403);
         }
+//        $posts = Post::where('user_id', auth()->id())->get();
+//        Foo::where('b', 15)->pluck('a')->toArray();
+//        $org->products()->whereIn('id', $ids)->delete();
+        $votes = PostVote::where('post_id', $post->id);
+        $reports = Report::where('post_id', $post->id);
+        $votes->delete();
+        $reports->delete();
         $post->delete();
         $thread = $post->thread;
         return view('threads.show', compact('thread'));
