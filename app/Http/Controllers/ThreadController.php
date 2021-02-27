@@ -3,6 +3,9 @@
     namespace App\Http\Controllers;
 
     use App\Models\Category;
+    use App\Models\Post;
+    use App\Models\PostVote;
+    use App\Models\Report;
     use App\Models\Thread;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
@@ -16,7 +19,6 @@
          */
         public function index()
         {
-
             $categories = Category::all();
             $threads = Thread::all();
             return view('threads.index', compact('categories', 'threads'));
@@ -97,6 +99,24 @@
          */
         public function destroy(Thread $thread)
         {
-            //
+            if ($thread->user_id != auth()->id()) {
+                abort(403);
+            }
+
+            $posts = Post::where('thread_id', intval($thread->id));
+            $post_array = array();
+            foreach ($posts as $post_id) {
+                array_push($post_array, $post_id->id);
+            }
+            $votes = PostVote::whereIn('post_id', $post_array);
+            $reports = Report::whereIn('post_id', $post_array);
+
+            $votes->delete();
+            $reports->delete();
+            $posts->delete();
+            $thread->delete();
+            $categories = Category::all();
+
+            return view('threads.index', compact('categories'));
         }
     }
