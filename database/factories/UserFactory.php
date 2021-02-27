@@ -22,7 +22,7 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $roles = ['Moderator', 'Pleb'];
+        $roles = ['Moderator', 'User'];
 
         return [
             'name' => $this->faker->name,
