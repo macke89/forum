@@ -12,84 +12,90 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css.css') }}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
-<body>
-<header class="text-gray-700 bg-white border-t border-b body-font">
-    <div class="container flex flex-col flex-wrap p-5 mx-auto md:items-center md:flex-row ">
-        <a class="flex items-center w-40 mb-4 font-medium text-gray-900 title-font md:mb-0">
-            <img src="../badges/WhitePink.svg" alt="">
-        </a>
-        <nav class="flex flex-wrap items-center justify-center text-base ">
-            <a href="{{ route('index') }}"
-               class="mr-5 text-m font-semibold text-blue-500 lg:ml-24 hover:text-blue-800">Forum</a>
-            <a href="#" class="mr-5 text-m font-semibold text-blue-500 hover:text-blue-800">Members</a>
-            <a href="#" class="mr-5 text-m font-semibold text-blue-500 hover:text-blue-800">Recent Posts</a>
-        </nav>
-        <div class="flex ml-auto space-x-5">
-            @auth()
-                <x-link-button link="dashboard" style="light">Dashboard</x-link-button>
-            @endauth
-            @guest()
-                <x-link-button link="login" style="full" class="m-3">Login</x-link-button>
-                <x-link-button link="register" style="light" class="m-3">Register</x-link-button>
-            @endguest
+<body class="box-border min-h-screen bg-white">
+<!-- HEADER -->
+<header class="mb-20">
+    <!-- LOGO -->
+    <div class="flex justify-between pl-5 bg-white">
+        <div class="flex flex-col items-center justify-center sm:flex-row">
+            <object id="tailwind-logo" class="w-10 h-10 sm:h-16 sm:w-16" data="{{ asset('svg/tailwindcss.svg') }}" type=""></object>
+            <h1 class="text-sm font-bold text-left sm:text-3xl sm:pl-7">FORUM V1</h1>
         </div>
+        <div class="flex flex-col items-end justify-center pr-5 font-semibold text-blue-900">
+            <a href="#" class="text-right transition-all duration-300 hover:text-blue-400">my Github</a>
+            <a href="#" class="text-right transition-all duration-300 hover:text-blue-400">my Homepage</a>
+        </div>
+    </div>
+    <!-- NAVBAR -->
+    <div class="flex justify-center bg-blue-800 sm:justify-end sm:p-5">
+        <nav class="text-xl font-semibold text-white">
+            <ul class="flex flex-wrap justify-center p-2 space-x-5">
+                <li><a href="#" class="transition-all duration-300 hover:text-blue-100">Forum</a></li>
+                <li><a href="#" class="transition-all duration-300 hover:text-blue-100">About</a></li>
+                <li><a href="#" class="transition-all duration-300 hover:text-blue-100">Dashboard</a></li>
+                <li><a href="#" class="transition-all duration-300 hover:text-blue-100">Login</a></li>
+                <li><a href="#" class="transition-all duration-300 hover:text-blue-100">Register</a></li>
+                <li><a href="#" class="transition-all duration-300 hover:text-blue-100">Logout</a></li>
+            </ul>
+        </nav>
     </div>
 </header>
 <div class="font-sans text-gray-900 antialiased">
     {{ $slot }}
 </div>
 
-<footer class="mt-10 text-gray-700 bg-white border-t body-font">
-    <div class="border-t border-gray-200">
-        <div class="container flex flex-col flex-wrap items-center justify-between p-5 mx-auto md:flex-row">
-            <a class="flex items-center w-48 mb-4 font-medium text-gray-900 title-font md:mb-0">
-                <img src="../badges/WhitePink.svg" alt="">
-            </a>
-            <div class="flex flex-wrap items-center justify-center mx-auto text-base ">
-                <a href="#" class="justify-center mr-5 text-sm text-center text-gray-600 hover:text-gray-800">
-                    Prices</a>
-                <a href="#" class="justify-center mr-5 text-sm text-center text-gray-600 hover:text-gray-800">
-                    Contact</a>
-                <a href="#" class="justify-center mr-5 text-sm text-center text-gray-600 hover:text-gray-800">
-                    Services</a>
-                <a href="#" class="justify-center mr-5 text-sm text-center text-gray-600 hover:text-gray-800">
-                    About</a>
+<footer class="content-center bg-white border-t">
+    <div class="md:flex md:gap-5 md:w-5/6 md:m-auto md:flex-col">
+        <div class="pt-5 md:justify-between md:flex">
+            <h1 class="mb-8 text-2xl font-bold text-center text-black lg:text-left lg:text-2xl title-font">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus quia aperiam fuga libero quisquam autem!
+            </h1>
+            <div class="text-center lg:w-full lg:text-right lg:w-1/3 md:w-1/2">
+                <h1 class="mb-3 text-sm font-semibold tracking-widest text-black uppercase title-font">
+                    Company
+                </h1>
+                <nav class="mb-10 list-none">
+                    <li>
+                        <a class="text-sm text-gray-600 hover:text-gray-800">Home</a>
+                    </li>
+                    <li>
+                        <a class="text-sm text-gray-600 hover:text-gray-800">About</a>
+                    </li>
+                    <li>
+                        <a class="text-sm text-gray-600 hover:text-gray-800">Carriers</a>
+                    </li>
+                    <li>
+                        <a class="text-sm text-gray-600 hover:text-gray-800">Pricing</a>
+                    </li>
+                </nav>
             </div>
-            <div class="inline-flex items-center justify-center md:justify-start ">
-                <span class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start">
-                <a class="text-blue-807 hover:text-blue-500">
-                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                     class="w-5 h-5" viewBox="0 0 24 24">
-                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                </svg>
-                </a>
-                <a class="ml-4 text-blue-870 hover:text-blue-500">
-                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                     class="w-5 h-5" viewBox="0 0 24 24">
-                <path
-                    d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
-                </path>
-                </svg>
-                </a>
-                <a class="ml-4 text-blue-870 hover:text-blue-500">
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                     stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                </svg>
-                </a>
-                </span>
+            <div class="text-center lg:w-full lg:text-right lg:w-1/3 md:w-1/2">
+                <h1 class="mb-3 text-sm font-semibold tracking-widest text-black uppercase title-font">Legal
+                </h1>
+                <nav class="mb-10 list-none">
+                    <li>
+                        <a class="text-sm text-gray-600 hover:text-gray-800">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a class="text-sm text-gray-600 hover:text-gray-800">Terms Of Service</a>
+                    </li>
+                    <li>
+                        <a class="text-sm text-gray-600 hover:text-gray-800">Trademark Policy</a>
+                    </li>
+                    <li>
+                        <a class="text-sm text-gray-600 hover:text-gray-800">Inactivity Policy</a>
+                    </li>
+                </nav>
             </div>
         </div>
-        <div
-            class="flex flex-wrap items-center justify-center py-6 mx-auto text-base bg-blueGray-900 ">
-            <p class="text-sm text-center text-gray-200 ">© Your Company — 2020
-            </p>
-        </div>
+    </div>
+    <div class="flex items-center w-full pl-5 text-3xl font-bold bg-blue-800 h-14">
+        <div class="text-white">Demo</div>
     </div>
 </footer>
 
