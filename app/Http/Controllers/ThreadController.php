@@ -7,6 +7,7 @@
     use App\Models\PostVote;
     use App\Models\Report;
     use App\Models\Thread;
+    use App\Models\User;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +22,10 @@
         {
             $categories = Category::all();
             $threads = Thread::all();
-            return view('threads.index', compact('categories', 'threads'));
+            $posts = Post::all();
+            $users = User::all();
+            $reports = Report::all();
+            return view('threads.index', compact('categories', 'threads', 'posts', 'users', 'reports'));
         }
 
         /**
