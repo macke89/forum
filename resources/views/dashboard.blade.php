@@ -1,16 +1,60 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+    <div class="container">
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <x-link-button style="full" link="thread.create">Create Thread</x-link-button>
-                </div>
+        <!-- MEMBERS -->
+        <div class="w-full mb-2 overflow-hidden border-t tab">
+            <input class="absolute opacity-0" id="tab-member-one" type="radio" name="tabs2">
+            <label
+                class="block p-2 font-bold leading-normal text-center text-white transition-all bg-blue-800 cursor-pointer hover:bg-blue-700"
+                for="tab-member-one">
+                Members
+            </label>
+            <div class="overflow-hidden leading-normal bg-white tab-content">
+                <ul class="border border-blue-800 w-full">
+                    <li class="flex justify-between p-2 font-bold border-b border-blue-100 w-full">
+                        <div class="w-1/4">NAME</div>
+                        <div class="w-1/4 text-center">THREADS</div>
+                        <div class="w-1/4 text-center">POSTS</div>
+                        <div class="w-1/4 text-right w-1/5">REPORTS</div>
+                    </li>
+                    @foreach($users as $user)
+                        <li class="flex justify-between p-2 border-b border-blue-100 w-full">
+                            <div class="w-1/4">{{ $user->name }}</div>
+                            <div class="w-1/4 text-center">{{ $user->threads->count() }}</div>
+                            <div class="w-1/4 text-center">{{ $user->posts->count() }}</div>
+                            <div class="w-1/4 text-right w-1/5">{{ $user->reports->count() }}</div>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+
+        <!-- REPORTS -->
+        <div class="w-full mb-2 overflow-hidden border-t tab">
+            <input class="absolute opacity-0" id="tab-reports-one" type="radio" name="tabs2">
+            <label
+                class="block p-2 font-bold leading-normal text-center text-white transition-all bg-blue-800 cursor-pointer hover:bg-blue-700"
+                for="tab-reports-one">
+                Reports
+            </label>
+            <div class="overflow-hidden leading-normal bg-white tab-content">
+                <ul class="border border-blue-800">
+                    <li class="flex justify-between p-2 font-bold border-b border-blue-100 w-full">
+                        <div class="w-1/4">Body</div>
+                        <div class="w-1/4 text-center">Thread</div>
+                        <div class="w-1/4 text-center">Who</div>
+                        <div class="w-1/4 text-right w-1/5">From</div>
+                    </li>
+                    @foreach($reports as $report)
+                        <li class="flex justify-between p-2 border-b border-blue-100 w-full">
+                            <div class="w-1/4">{{ Illuminate\Support\Str::limit($report->body, 20) }}</div>
+                            <div class="w-1/4 text-center">{{ $report->post->thread->title }}</div>
+                            <div class="w-1/4 text-center">{{ $report->post->user->name }}</div>
+                            <div class="w-1/4 text-right w-1/5">{{ $report->user->name }}</div>
+                        </li>
+                    @endforeach
+
+                </ul>
             </div>
         </div>
     </div>
