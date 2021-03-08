@@ -44,7 +44,7 @@ class User extends Authenticatable
 
     public function posts()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasManyThrough(Post::class, Thread::class);
     }
 
     public function reports()
@@ -55,5 +55,10 @@ class User extends Authenticatable
     public function postVotes()
     {
         return $this->hasMany(PostVote::class);
+    }
+
+    public function threads()
+    {
+        return $this->hasMany(Thread::class);
     }
 }
