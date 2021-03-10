@@ -83,6 +83,7 @@ class PostController extends Controller
             'body' => $request->body
         ]);
         $thread = $post->thread;
+//        dd($thread);
         return view('threads.show', compact('thread'));
     }
 
@@ -97,15 +98,9 @@ class PostController extends Controller
         if ($post->user_id != auth()->id()) {
             abort(403);
         }
-//        $posts = Post::where('user_id', auth()->id())->get();
-//        Foo::where('b', 15)->pluck('a')->toArray();
-//        $org->products()->whereIn('id', $ids)->delete();
-        $votes = PostVote::where('post_id', $post->id);
-        $reports = Report::where('post_id', $post->id);
-        $votes->delete();
-        $reports->delete();
-        $post->delete();
+
         $thread = $post->thread;
-        return view('threads.show', compact('thread'));
+        $post->delete();
+        return redirect()->route('thread.show', compact('thread'));
     }
 }

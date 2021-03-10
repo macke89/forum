@@ -10,6 +10,7 @@
     use App\Models\User;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
+    use function Sodium\compare;
 
     class ThreadController extends Controller
     {
@@ -54,7 +55,7 @@
                 'body' => $request->body
             ]);
 
-            return redirect()->route('thread.show', $thread);
+            return redirect()->route('thread.show', compact('thread'));
         }
 
         /**
@@ -107,20 +108,10 @@
                 abort(403);
             }
 
-            $posts = Post::where('thread_id', intval($thread->id));
-            $post_array = array();
-            foreach ($posts as $post_id) {
-                array_push($post_array, $post_id->id);
-            }
-            $votes = PostVote::whereIn('post_id', $post_array);
-            $reports = Report::whereIn('post_id', $post_array);
-
-            $votes->delete();
-            $reports->delete();
-            $posts->delete();
+            Post::where('thread_id', $thread->id)->delete();
             $thread->delete();
             $categories = Category::all();
 
-            return view('threads.index', compact('categories'));
+            return redirect()->route('index', compact('categories'));
         }
     }

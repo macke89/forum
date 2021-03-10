@@ -16,7 +16,7 @@ class ThreadSeeder extends Seeder
     {
         Thread::create([
             'title' => 'AdminThread',
-            'body' => 'That is a Test Thread Body',
+            'body' => 'This is a Test Thread Body',
             'user_id' => '1',
             'category_id' => '1'
         ]);
