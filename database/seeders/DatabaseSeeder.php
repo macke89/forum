@@ -22,12 +22,12 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(ThreadSeeder::class);
         $this->call(PostSeeder::class);
-        $this->call(PostVoteSeeder::class);
-        $this->call(ReportSeeder::class);
+//        $this->call(PostVoteSeeder::class);
+//        $this->call(ReportSeeder::class);
         User::factory(40)->create();
         Thread::factory(20)->create();
-        Post::factory(90)->create();
-        PostVote::factory(300)->create();
-        Report::factory(10)->create();
+        Post::factory(40)->create();
+//        PostVote::factory(300)->create();
+//        Report::factory(10)->create();
     }
 }
