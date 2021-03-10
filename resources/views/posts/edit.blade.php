@@ -1,39 +1,29 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+    <div class="w-full p-5 overflow-hidden shadow-sm bg-blue-50">
+        {{--POST EDIT--}}
+        <form
+            action="{{ route('post.update', $post) }}"
+            method="POST"
+            enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                {{--POST EDIT--}}
-                <form
-                    action="{{ route('post.update', $post) }}"
-                    method="POST"
-                    enctype="multipart/form-data"
-                    class="flex flex-col m-10">
-                    @method('PUT')
-                    @csrf
+        {{--CONTENT--}}
+        <label for="body" class="font-semibold text-blue-900">{{ __('Content') }}</label>
+        <textarea name="body" id="body" rows="10"
+                  class="block w-full mt-1 @error('body') is-invalid @enderror">{{ $post->body }}</textarea>
 
-                    {{--CONTENT--}}
-                    <label
-                        for="body"
-                        class="text-center">{{ __('Content') }}</label>
-                    <textarea name="body" id="body" rows="10"
-                              class="@error('body') is-invalid @enderror">{{ $post->body }}</textarea>
-
-                    @error('body')
-                    <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                    @enderror
-                    <div class="flex items-center justify-end mt-4">
-                        <x-button class="ml-4">
-                            {{ __('Update Post') }}
-                        </x-button>
-                    </div>
-                </form>
-            </div>
+        @error('body')
+        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+        @enderror
+        <div class="flex items-center justify-end mt-4">
+            <button
+                class="w-full px-4 py-2 mb-2 font-bold text-center text-white bg-blue-500 rounded hover:bg-blue-700 transition-all duration-300">
+                Update Post
+            </button>
         </div>
+        </form>
+    </div>
+    </div>
     </div>
 </x-app-layout>

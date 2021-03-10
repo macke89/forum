@@ -24,7 +24,11 @@
                     </td>
                     <td class="hidden text-center sm:table-cell">{{ $thread->created_at->diffForHumans() }}</td>
                     <td class="text-center">{{ $thread->posts->count() }}</td>
-                    <td class="text-center">{{ $thread->posts->last()->created_at->diffForHumans() }}</td>
+                    @if($thread->posts->count() !== 0)
+                        <td class="text-center">{{ $thread->posts->last()->created_at->diffForHumans() ?? "test" }}</td>
+                    @else
+                        <td class="text-center">No Answers</td>
+                    @endif
                 </tr>
             @endforeach
             </tbody>

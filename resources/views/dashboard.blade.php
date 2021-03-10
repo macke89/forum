@@ -41,9 +41,9 @@
                 <ul class="border border-blue-800">
                     <li class="flex justify-between p-2 font-bold border-b border-blue-100 w-full">
                         <div class="w-1/4">Body</div>
-                        <div class="w-1/4 text-center">Thread</div>
-                        <div class="w-1/4 text-center">Who</div>
-                        <div class="w-1/4 text-right w-1/5">From</div>
+                        <div class="w-1/4 text-center">Thread/Post</div>
+                        <div class="w-1/4 text-center">Reported</div>
+                        <div class="w-1/4 text-right w-1/5">Report Author</div>
                     </li>
                     @foreach($reports as $report)
                         <li class="flex justify-between p-2 border-b border-blue-100 w-full">

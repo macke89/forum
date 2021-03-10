@@ -14,28 +14,35 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
-<body class="box-border min-h-screen bg-white">
+<body class="box-border min-h-screen bg-white flex-col flex justify-between">
 <!-- HEADER -->
 <header class="mb-20">
     <!-- LOGO -->
     <div class="flex justify-between pl-5 bg-white">
         <div class="flex flex-col items-center justify-center sm:flex-row">
-            <object id="tailwind-logo" class="w-10 h-10 sm:h-16 sm:w-16" data="{{ asset('svg/tailwindcss.svg') }}"
-                    type=""></object>
+            <a href="{{ route('index') }}" class="transform hover:scale-110 transition-all duration-300">
+                <div class="pointer-events-none">
+                    <object id="tailwind-logo" class="w-10 h-10 sm:h-16 sm:w-16"
+                            data="{{ asset('svg/tailwindcss.svg') }}"
+                            type=""></object>
+                </div>
+            </a>
             <h1 class="text-sm font-bold text-left sm:text-3xl sm:pl-7">FORUM V1</h1>
         </div>
         <div class="flex flex-col items-end justify-center pr-5 font-semibold text-blue-900">
-            <a target="_blank" href="https://github.com/macke89" class="text-right transition-all duration-300 hover:text-blue-400">my
+            <a target="_blank" href="https://github.com/macke89"
+               class="text-right transition-all duration-300 hover:text-blue-400">my
                 Github</a>
-            <a target="_blank" href="https://mo-webdesign.com/" class="text-right transition-all duration-300 hover:text-blue-400">my
+            <a target="_blank" href="https://mo-webdesign.com/"
+               class="text-right transition-all duration-300 hover:text-blue-400">my
                 Homepage</a>
         </div>
     </div>
     @include('layouts.navigation')
 </header>
-<main class="content-center p-2 md:flex md:gap-5 lg:w-5/6 md:m-auto">
-{{ $slot }}
-@include('layouts.sidebar')
+<main class="content-center p-2 md:flex md:gap-5 lg:w-5/6 md:m-auto md:max-w-5xl">
+    {{ $slot }}
+    @include('layouts.sidebar')
 </main>
 
 <footer class="content-center bg-white border-t mt-10">
