@@ -3,7 +3,7 @@
         <!-- THREAD -->
         <div class="mb-20">
             <!-- HEADER -->
-            <div class="flex items-center justify-between w-full h-16 p-2 text-white bg-blue-800 last:ml-auto">
+            <div class="flex items-center justify-between w-full sm:h-16 p-2 text-white bg-blue-800 last:ml-auto">
                 <div class="w-2/6">
                     @auth()
                         @if(auth()->id() == $thread->user_id)
@@ -16,7 +16,7 @@
                         @endif
                     @endauth
                 </div>
-                <div class="w-2/6 text-center">
+                <div class="w-2/6 text-center min-w-min">
                     <div class="text-xl font-bold">{{ $thread->title }}</div>
                     <div class="text-sm font-semibold">by {{ $thread->user->name }}</div>
                 </div>
@@ -57,7 +57,7 @@
             @if($post->thread_id == $thread->id)
                 <div class="mb-10">
                     <!-- HEADER -->
-                    <div class="flex items-center justify-between w-full p-2 text-white bg-blue-700 h-14">
+                    <div class="flex items-center justify-between w-full p-2 text-white bg-blue-700 sm:h-14">
                         <div class="w-2/6">
                             @auth()
                                 @if(auth()->id() == $post->user_id)

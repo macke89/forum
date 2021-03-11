@@ -5,10 +5,10 @@
         <!-- CATEGORY -->
             <thead class="text-left text-white bg-blue-700">
             <tr class="justify-between flex-1">
-                <th class="w-1/3 p-3">{{ $category->name }}</th>
-                <th class="hidden text-center sm:table-cell">Posted</th>
-                <th class="text-center">Answers</th>
-                <th class="text-center">Last Post</th>
+                <th class="w-2/3 sm:w-1/3 p-3">{{ $category->name }}</th>
+                <th class="text-center hidden sm:table-cell">Posted</th>
+                <th class="text-center hidden sm:table-cell">Answers</th>
+                <th class="text-right sm:text-center pr-3">Last Post</th>
             </tr>
             </thead>
             <!-- TABLE BODY -->
@@ -22,12 +22,12 @@
                         <div>{{ $thread->title }}</div>
                         <div>by <span class="font-semibold">{{ $thread->user->name }}</span></div>
                     </td>
-                    <td class="hidden text-center sm:table-cell">{{ $thread->created_at->diffForHumans() }}</td>
-                    <td class="text-center">{{ $thread->posts->count() }}</td>
+                    <td class="hidden sm:table-cell">{{ $thread->created_at->diffForHumans() }}</td>
+                    <td class="hidden sm:table-cell">{{ $thread->posts->count() }}</td>
                     @if($thread->posts->count() !== 0)
-                        <td class="text-center">{{ $thread->posts->last()->created_at->diffForHumans() ?? "test" }}</td>
+                        <td class="text-right sm:text-center pr-3">{{ $thread->posts->last()->created_at->diffForHumans() ?? "test" }}</td>
                     @else
-                        <td class="text-center">No Answers</td>
+                        <td class="text-right sm:text-center text-center pr-3">No Answers</td>
                     @endif
                 </tr>
             @endforeach
