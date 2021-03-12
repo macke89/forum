@@ -29,13 +29,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('threads', Thread::all());
-        View::share('mostRecentThreads', Thread::latest()->take(5)->get());
-        View::share('mostPopularThreads', Thread::with('posts')->get()->sortByDesc(function($query) {
-            return $query->posts->count();
-        })->take(5));
-        View::share('posts', Post::all());
-        View::share('users', User::all());
-        View::share('reports', Report::all());
+//        View::share('threads', Thread::all());
+//        View::share('mostRecentThreads', Thread::latest()->take(5)->get());
+//        View::share('mostPopularThreads', Thread::with('posts')->get()->sortByDesc(function($query) {
+//            return $query->posts->count();
+//        })->take(5));
+//        View::share('posts', Post::all());
+//        View::share('users', User::all());
+//        View::share('reports', Report::all());
     }
 }
