@@ -19,7 +19,7 @@
                 </label>
                 <div class="overflow-hidden leading-normal bg-white tab-content">
                     @foreach($mostRecentThreads as $thread)
-                        <div class="p-3 border-b-2 border-blue-50 flex flex-row justify-between">
+                        <div class="p-3 border-b-2 border-blue-50 flex flex-col justify-between">
                             <div>{{ $thread->title }}</div>
                             <div>{{ $thread->created_at->diffForHumans() }}</div>
                         </div>

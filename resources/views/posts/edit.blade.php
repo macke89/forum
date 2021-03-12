@@ -1,5 +1,6 @@
 <x-app-layout>
     <div class="w-full p-5 overflow-hidden shadow-sm bg-blue-50">
+        <x-auth-validation-errors class="mb-4" :errors="$errors"/>
         {{--POST EDIT--}}
         <form
             action="{{ route('post.update', $post) }}"
@@ -11,7 +12,7 @@
         {{--CONTENT--}}
         <label for="body" class="font-semibold text-blue-900">{{ __('Content') }}</label>
         <textarea name="body" id="body" rows="10"
-                  class="block w-full mt-1 @error('body') is-invalid @enderror">{{ $post->body }}</textarea>
+                  class="block w-full mt-1 @ is-invalid">{{ $post->body }}</textarea>
 
         @error('body')
         <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>

@@ -1,13 +1,15 @@
 <x-app-layout>
     <div class="w-full p-5 overflow-hidden shadow-sm bg-blue-50">
-    <!-- {{--THREAD CREATE--}} -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors"/>
+        <!-- {{--THREAD CREATE--}} -->
         <form method="POST" action="{{ route('thread.store') }}">
         @csrf
 
-            <!--Title-->
+        <!--Title-->
             <div>
                 <label class="font-semibold text-blue-900" for="title">Title</label>
-                <input type="text" name="title" id="title" class="block w-full mt-1">
+                <input type="text" name="title" id="title"
+                       class="block w-full mt-1 @error('title') is-invalid @enderror" value="{{ old('title') }}">
 
                 <div class="mt-4">
                     <label class="font-semibold text-blue-900" for="category">Category</label>
@@ -22,9 +24,12 @@
 
             <!--CONTENT-->
             <div class="mt-4">
-                <label class="font-semibold text-blue-900" for="body">Conent</label>
+                <label class="font-semibold text-blue-900" for="body">Content</label>
 
-                <textarea name="body" id="body" rows="15" class="block w-full mt-1"></textarea>
+                <textarea name="body"
+                          id="body"
+                          rows="15"
+                          class="block w-full mt-1 @error('body') is-invalid @enderror">{{ old('body') }}</textarea>
             </div>
 
 

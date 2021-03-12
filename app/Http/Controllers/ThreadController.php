@@ -2,6 +2,8 @@
 
     namespace App\Http\Controllers;
 
+    use App\Http\Requests\ThreadStoreRequest;
+    use App\Http\Requests\ThreadUpdateRequest;
     use App\Models\Category;
     use App\Models\Post;
     use App\Models\PostVote;
@@ -46,7 +48,7 @@
          * @param \Illuminate\Http\Request $request
          * @return \Illuminate\Http\Response
          */
-        public function store(Request $request)
+        public function store(ThreadStoreRequest $request)
         {
             $thread = Thread::create([
                 'title' => $request->title,
@@ -87,7 +89,7 @@
          * @param \App\Models\Thread $thread
          * @return \Illuminate\Http\Response
          */
-        public function update(Request $request, Thread $thread)
+        public function update(ThreadUpdateRequest $request, Thread $thread)
         {
             $thread->update([
                 'title' => $request->title,

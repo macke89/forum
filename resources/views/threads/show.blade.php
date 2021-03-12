@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="container col-span-7 col-start-2">
+    <div class="container col-span-7 col-start-2 md:w-4/6">
         <!-- THREAD -->
         <div class="mb-20">
             <!-- HEADER -->
@@ -42,8 +42,8 @@
                 </div>
             </div>
             <!-- BODY -->
-            <div class="p-2 border-l border-r border-blue-600">
-                <p>{{ $thread->body }}</p>
+            <div class="p-2 border-l border-r border-blue-600 break-words">
+                <p>{!! nl2br($thread->body) !!}</p>
             </div>
             <!-- FOOTER -->
             <div
@@ -98,7 +98,7 @@
                     </div>
                     <!-- BODY -->
                     <div>
-                        <p class="p-2 border-l border-r border-blue-600">{{ $post->body }}</p>
+                        <p class="p-2 border-l border-r border-blue-600 break-words">{!! nl2br($post->body) !!}</p>
                     </div>
                     <!-- FOOTER -->
                     <div
@@ -114,11 +114,12 @@
             </div>
         @endforelse
         @auth()
+            <x-auth-validation-errors class="mb-4" :errors="$errors"/>
             <form class="mb-3 pt-0" method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" id="thread_id" name="thread_id" value="{{ $thread->id }}">
-                <label for="wysiwyg-editor">Answer</label>
-                <textarea class="form-control w-full" name="postBody" rows="10" required></textarea>
+                <label for="postBody">Answer</label>
+                <textarea id="postBody" class="form-control w-full @error('postBody') is-invalid @enderror" name="postBody" rows="10" required></textarea>
                 <button
                     class="w-full px-4 py-2 mb-2 font-bold text-center text-white bg-blue-500 rounded hover:bg-blue-700 transition-all duration-300">
                     Create Post

@@ -9,19 +9,18 @@
 
         <form method="POST" action="{{ route('login') }}">
         @csrf
-
         <!-- Email Address -->
             <div>
                 <label class="font-semibold text-blue-900" for="email">Email</label>
 
-                <input type="email" name="email" id="email" class="block w-full mt-1">
+                <input type="email" name="email" id="email" class="block w-full mt-1" value="{{ old('email') }}" required>
             </div>
 
             <!-- Password -->
             <div class="mt-4">
-                <label class="font-semibold text-blue-900" for="password">Email</label>
+                <label class="font-semibold text-blue-900" for="password">Password</label>
 
-                <input type="password" name="password" id="password" class="block w-full mt-1">
+                <input type="password" name="password" id="password" class="block w-full mt-1" required>
             </div>
 
             <!-- Remember Me -->
