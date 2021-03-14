@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css')}}">
 </head>
 <body class="box-border min-h-screen bg-white">
 <!-- HEADER -->
@@ -23,7 +23,7 @@
             <a href="{{ route('index') }}" class="transform hover:scale-110 transition-all duration-300">
                 <div class="pointer-events-none">
                     <object id="tailwind-logo" class="w-10 h-10 sm:h-16 sm:w-16"
-                            data="{{ asset('/svg/tailwindcss.svg') }}"
+                            data="{{ asset('svg/tailwindcss.svg') }}"
                             type=""></object>
                 </div>
             </a>
@@ -96,7 +96,7 @@
     </div>
 </footer>
 <!-- Scripts -->
-<script src="{{ asset('/js/app.js') }}" defer></script>
-<script src="{{ asset('/js/main.js') }}" defer></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('js/main.js') }}" defer></script>
 </body>
 </html>
