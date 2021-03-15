@@ -27,7 +27,7 @@ class ThreadFactory extends Factory
         return [
             'title' => $this->faker->text(20),
             'body' => $this->faker->text(600),
-            'user_id' => Post::factory(),
+            'user_id' => User::all()->random()->id,
             'category_id' => Category::all()->random()->id
         ];
     }

@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UserSeeder::class);
+//        $this->call(UserSeeder::class);
         $this->call(CategorySeeder::class);
-        $this->call(ThreadSeeder::class);
-        $this->call(PostSeeder::class);
+//        $this->call(ThreadSeeder::class);
+//        $this->call(PostSeeder::class);
 //        $this->call(PostVoteSeeder::class);
 //        $this->call(ReportSeeder::class);
         User::factory(40)->create();
