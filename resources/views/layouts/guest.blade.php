@@ -45,7 +45,7 @@
     @include('layouts.sidebar')
 </main>
 
-<footer class="content-center bg-white border-t mt-10">
+<footer class="content-center bg-white border-t mt-20">
     <div class="md:flex md:gap-5 md:w-5/6 md:m-auto md:flex-col">
         <div class="pt-5 md:justify-between md:flex">
             <h1 class="mb-8 text-2xl font-bold text-center text-black lg:text-left lg:text-2xl title-font">

@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="container col-span-7 col-start-2 md:w-4/6">
+    <div class="w-full">
         <!-- THREAD -->
         <div class="mb-20">
             <!-- HEADER -->
@@ -11,8 +11,8 @@
                                type="submiit"
                                href="{{ route('thread.edit', $thread) }}">EDIT</a>
                         @else
-{{--                            <a class="px-4 py-2 mb-2 font-bold text-center text-white duration-300 bg-blue-300 border-2 border-blue-300 rounded hover:bg-blue-500 hover:border-2 hover:border-white"--}}
-{{--                               href="#">SEND PM</a>--}}
+                            {{--                            <a class="px-4 py-2 mb-2 font-bold text-center text-white duration-300 bg-blue-300 border-2 border-blue-300 rounded hover:bg-blue-500 hover:border-2 hover:border-white"--}}
+                            {{--                               href="#">SEND PM</a>--}}
                         @endif
                     @endauth
                 </div>
@@ -35,8 +35,8 @@
                                 </button>
                             </form>
                         @else
-{{--                            <a class="px-4 py-2 font-bold text-center text-white duration-300 bg-red-400 border-2 border-red-400 rounded hover:bg-red-700 hover:border-2 hover:border-white"--}}
-{{--                               href="#">REPORT</a>--}}
+                            {{--                            <a class="px-4 py-2 font-bold text-center text-white duration-300 bg-red-400 border-2 border-red-400 rounded hover:bg-red-700 hover:border-2 hover:border-white"--}}
+                            {{--                               href="#">REPORT</a>--}}
                         @endif
                     @endauth
                 </div>
@@ -67,8 +67,8 @@
                                         Edit
                                     </a>
                                 @else
-{{--                                    <a class="px-4 py-2 font-bold text-center text-white duration-300 bg-blue-300 border-2 border-blue-300 rounded hover:bg-blue-500 hover:border-2 hover:border-white"--}}
-{{--                                       href="#">Send PM</a>--}}
+                                    {{--                                    <a class="px-4 py-2 font-bold text-center text-white duration-300 bg-blue-300 border-2 border-blue-300 rounded hover:bg-blue-500 hover:border-2 hover:border-white"--}}
+                                    {{--                                       href="#">Send PM</a>--}}
                                 @endif
                             @endauth
                         </div>
@@ -90,8 +90,8 @@
                                         </button>
                                     </form>
                                 @else
-{{--                                    <a class="px-4 py-2 font-bold text-center text-white duration-300 bg-red-400 border-2 border-red-400 rounded hover:bg-red-700 hover:border-2 hover:border-white"--}}
-{{--                                       href="#">Report</a>--}}
+                                    {{--                                    <a class="px-4 py-2 font-bold text-center text-white duration-300 bg-red-400 border-2 border-red-400 rounded hover:bg-red-700 hover:border-2 hover:border-white"--}}
+                                    {{--                                       href="#">Report</a>--}}
                                 @endif
                             @endauth
                         </div>
@@ -119,7 +119,9 @@
                 @csrf
                 <input type="hidden" id="thread_id" name="thread_id" value="{{ $thread->id }}">
                 <label for="postBody">Answer</label>
-                <textarea id="postBody" class="form-control w-full @error('postBody') is-invalid @enderror" name="postBody" rows="10" required></textarea>
+                <textarea id="postBody" class="form-control w-full @error('postBody') is-invalid @enderror"
+                          name="postBody"
+                          rows="10" required></textarea>
                 <button
                     class="w-full px-4 py-2 mb-2 font-bold text-center text-white bg-blue-500 rounded hover:bg-blue-700 transition-all duration-300">
                     Create Post
