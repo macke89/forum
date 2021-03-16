@@ -22,8 +22,8 @@
                         <div>{{ $thread->title }}</div>
                         <div>by <span class="font-semibold">{{ $thread->user->name }}</span></div>
                     </td>
-                    <td class="hidden sm:table-cell">{{ $thread->created_at->diffForHumans() }}</td>
-                    <td class="hidden sm:table-cell">{{ $thread->posts->count() }}</td>
+                    <td class="hidden sm:table-cell text-center">{{ $thread->created_at->diffForHumans() }}</td>
+                    <td class="hidden sm:table-cell text-center">{{ $thread->posts->count() }}</td>
                     @if($thread->posts->count() !== 0)
                         <td class="text-right sm:text-center pr-3">{{ $thread->posts->last()->created_at->diffForHumans() ?? "test" }}</td>
                     @else
