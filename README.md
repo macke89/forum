@@ -7,47 +7,35 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# NewBlog
-My first Test Project to get accustomed to Laravel. It is a Blog with Registration, Posts and Comments. Build with Laravel/ui, standard Bootstrap, minimum Design.
+# Forum
+A CRUD Application build with Laravel Breeze. The Frontend is made with Blade, TailwindCSS and Javascript.
 
 ---
 
 ## How to run the App
-1. clone or Download Repository
-2. open Terminal and cd into Project Folder
-3. run the following Commands in the Terminal:
-   >composer install
-
-   >npm install
-4. create a Database
-5. run:
-   >php artisan key:generate
-6. create .evn file from .env.example
-7. change DB connection in your .env file
-8. run:
-   >php artisan storage:link
-
-   >php artisan migrate:fresh --seed
-
-*You can use the following Account to Login*
-
-**Email:** Admin@admin.com
-
-**Password:** password
-
+The App is live [here](https://myforumlaravel.herokuapp.com/). You need to create an Account to post, Email Verification is not activated.
 
 ---
-## Main Feature
+## Planned
+1. User can report a Post
+    - User can Delete Reported Post
+    - User can Delete Report
+2. User can send and receive Personal Messages
+3. User Roles & Permissions
 ---
 ## User Stories
-
+- User can create Account
+- User can create Thread
+    - User can Update own Threads
+    - User can Delete own Threads
+    
+- User can Post in a Thread
+    - User can Update own Posts
+    - User can Delete own Posts
 ---
-## Features
-
 
 ## Pictures
-### Table Design
-
-
 ### App
-
+![index](Screenshot%20(16).png)
+![show](Screenshot%20(15).png)
+![dashboard](Screenshot%20(18).png)
