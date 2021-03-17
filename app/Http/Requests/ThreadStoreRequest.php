@@ -25,7 +25,7 @@ class ThreadStoreRequest extends FormRequest
     {
         return [
             'title' => 'required|min:5',
-            'body' => 'required|max:1000|min:50',
+            'body' => 'required|max:2000|min:10',
         ];
     }
 }
