@@ -97,8 +97,8 @@
                         </div>
                     </div>
                     <!-- BODY -->
-                    <div>
-                        <p class="p-2 border-l border-r border-blue-600 break-words">{!! nl2br($post->body) !!}</p>
+                    <div class="p-2 border-l border-r border-blue-600 break-words">
+                        <p>{!! nl2br($post->body) !!}</p>
                     </div>
                     <!-- FOOTER -->
                     <div
@@ -121,7 +121,8 @@
                 <label for="postBody">Answer</label>
                 <textarea id="postBody" class="form-control w-full @error('postBody') is-invalid @enderror"
                           name="postBody"
-                          rows="10" required></textarea>
+                          rows="10" required>
+                </textarea>
                 <button
                     class="w-full px-4 py-2 mb-2 font-bold text-center text-white bg-blue-500 rounded hover:bg-blue-700 transition-all duration-300">
                     Create Post

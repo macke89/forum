@@ -41,6 +41,7 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request)
     {
+//        dd($request->postBody);
         Post::create([
             'thread_id' => $request->thread_id,
             'user_id' => Auth::user()->id,
