@@ -24,10 +24,6 @@
         public function index()
         {
             $categories = Category::all();
-//            $threads = Thread::all();
-//            $posts = Post::all();
-//            $users = User::all();
-//            $reports = Report::all();
             return view('threads.index', compact('categories'));
         }
 

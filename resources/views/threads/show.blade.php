@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
     <div class="w-full">
         <!-- THREAD -->
         <div class="mb-20">
@@ -129,4 +129,4 @@
             </form>
         @endauth()
     </div>
-</x-guest-layout>
+</x-app-layout>

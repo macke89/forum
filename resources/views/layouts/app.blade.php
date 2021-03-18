@@ -13,8 +13,9 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css')}}">
+    @livewireStyles
 </head>
-<body class="box-border min-h-screen bg-white">
+<body class="box-border min-h-screen bg-white flex-col flex justify-between">
 <!-- HEADER -->
 <header class="mb-20">
     <!-- LOGO -->
@@ -98,5 +99,6 @@
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
 <script src="{{ asset('js/main.js') }}" defer></script>
+@livewireScripts
 </body>
 </html>

@@ -24,7 +24,8 @@ class ThreadStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:5',
+            'title' => 'required|min:5|unique',
+            'category' => 'required',
             'body' => 'required|max:2000|min:10',
         ];
     }

@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
     <div class="w-full p-5 overflow-hidden shadow-sm bg-blue-50">
 
         <!-- Validation Errors -->
@@ -42,9 +42,9 @@
             </div>
 
             <div class="flex items-center justify-end mt-4 flex-col">
-{{--                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">--}}
-{{--                    {{ __('Already registered?') }}--}}
-{{--                </a>--}}
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                    {{ __('Already registered?') }}
+                </a>
 
                 <button
                     class="w-full px-4 py-2 mb-2 font-bold text-center text-white bg-blue-500 rounded hover:bg-blue-700 transition-all duration-300 mt-2">
@@ -53,4 +53,4 @@
             </div>
         </form>
     </div>
-</x-guest-layout>
+</x-app-layout>

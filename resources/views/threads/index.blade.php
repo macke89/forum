@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
     <!-- TABLE -->
     <table class="w-full table-fixed">
     @foreach($categories as $category)
@@ -43,4 +43,4 @@
         {{--        </tr>--}}
         {{--        </tfoot>--}}
     </table>
-</x-guest-layout>
+</x-app-layout>

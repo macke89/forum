@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container col-span-7 col-start-2 md:w-4/6">
+    <div class="w-full">
 
         <!-- MEMBERS -->
         <div class="w-full mb-2 overflow-hidden border-t tab">

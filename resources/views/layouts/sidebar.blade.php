@@ -4,7 +4,7 @@
         <div class="flex flex-col">
         @auth()
             <!-- NEW THREAD -->
-                <a class="w-full px-4 py-2 mb-2 font-bold text-center text-white bg-blue-500 rounded hover:bg-blue-700 transition-all duration-300"
+                <a class="w-full px-4 py-2 mb-2 font-bold text-center text-white bg-blue-500 rounded hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
                    href="{{ route('thread.create') }}">
                     New Thread
                 </a>
