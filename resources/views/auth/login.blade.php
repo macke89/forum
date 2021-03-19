@@ -1,6 +1,9 @@
 <x-guest-layout>
 
     <div class="w-full p-5 overflow-hidden shadow-sm bg-blue-50">
+
+        <div class="text-center">Email: admin@admin.com <br/> Password: password</div>
+
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')"/>
 
@@ -13,14 +16,14 @@
             <div>
                 <label class="font-semibold text-blue-900" for="email">Email</label>
 
-                <input type="email" name="email" id="email" class="block w-full mt-1" value="{{ old('email') }}" required>
+                <input type="email" name="email" id="email" class="block w-full mt-1" value="admin@admin.com" required>
             </div>
 
             <!-- Password -->
             <div class="mt-4">
                 <label class="font-semibold text-blue-900" for="password">Password</label>
 
-                <input type="password" name="password" id="password" class="block w-full mt-1" required>
+                <input type="password" name="password" id="password" class="block w-full mt-1" value="password" required>
             </div>
 
             <!-- Remember Me -->
