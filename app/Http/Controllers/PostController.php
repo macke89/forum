@@ -98,12 +98,15 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        if ($post->user_id != auth()->id()) {
+        if ($post->user_id == auth()->id()) {
+            $thread = $post->thread;
+            $post->delete();
+            return redirect()->route('thread.show', compact('thread'));
+        } elseif (auth()->id() == 1) {
+            $post->delete();
+            return redirect()->route( 'dashboard' );
+        } else {
             abort(403);
         }
-
-        $thread = $post->thread;
-        $post->delete();
-        return redirect()->route('thread.show', compact('thread'));
     }
 }

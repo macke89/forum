@@ -8,7 +8,7 @@
                     @auth()
                         @if(auth()->id() == $thread->user_id)
                             <a class="px-4 py-2 font-bold text-center text-white duration-300 bg-green-300 border-2 border-green-300 rounded hover:bg-green-500 hover:border-2 hover:border-white"
-                               type="submiit"
+                               type="submit"
                                href="{{ route('thread.edit', $thread) }}">EDIT</a>
                         @else
                             {{--                            <a class="px-4 py-2 mb-2 font-bold text-center text-white duration-300 bg-blue-300 border-2 border-blue-300 rounded hover:bg-blue-500 hover:border-2 hover:border-white"--}}
@@ -67,8 +67,8 @@
                                         Edit
                                     </a>
                                 @else
-                                    {{--                                    <a class="px-4 py-2 font-bold text-center text-white duration-300 bg-blue-300 border-2 border-blue-300 rounded hover:bg-blue-500 hover:border-2 hover:border-white"--}}
-                                    {{--                                       href="#">Send PM</a>--}}
+                                    {{--<a class="px-4 py-2 font-bold text-center text-white duration-300 bg-blue-300 border-2 border-blue-300 rounded hover:bg-blue-500 hover:border-2 hover:border-white"--}}
+                                    {{--href="#">Send PM</a>--}}
                                 @endif
                             @endauth
                         </div>
@@ -90,8 +90,8 @@
                                         </button>
                                     </form>
                                 @else
-                                    {{--                                    <a class="px-4 py-2 font-bold text-center text-white duration-300 bg-red-400 border-2 border-red-400 rounded hover:bg-red-700 hover:border-2 hover:border-white"--}}
-                                    {{--                                       href="#">Report</a>--}}
+                                    <a class="px-4 py-2 font-bold text-center text-white duration-300 bg-red-400 border-2 border-red-400 rounded hover:bg-red-700 hover:border-2 hover:border-white"
+                                       href="{{ route('report.create', $post) }}">Report</a>
                                 @endif
                             @endauth
                         </div>
