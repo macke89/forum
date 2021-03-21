@@ -9,10 +9,10 @@
                 <li>
                     <a href="{{ route('login') }}" class="transition-all duration-300 hover:text-blue-100">Login</a>
                 </li>
-                <li>
-                    <a href="{{ route('register') }}"
-                       class="transition-all duration-300 hover:text-blue-100">Register</a>
-                </li>
+                {{--                <li>--}}
+                {{--                    <a href="{{ route('register') }}"--}}
+                {{--                       class="transition-all duration-300 hover:text-blue-100">Register</a>--}}
+                {{--                </li>--}}
             @endguest
             @auth()
                 <li>

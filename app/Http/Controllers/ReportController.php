@@ -88,9 +88,11 @@
          * @return \Illuminate\Http\Response
          */
         public function destroy( report $report ) {
+            $reports = Report::where('post_id', $report->post->id);
+//            dd($reports);
             $post = $report->post;
+            $reports->delete();
             $post->delete();
-            $report->delete();
 
             return redirect()->route( 'dashboard' );
         }

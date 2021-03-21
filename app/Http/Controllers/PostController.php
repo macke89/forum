@@ -99,10 +99,15 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         if ($post->user_id == auth()->id()) {
+
+            $reports = Report::where('post_id', $post->id);
             $thread = $post->thread;
+            $reports->delete();
             $post->delete();
             return redirect()->route('thread.show', compact('thread'));
         } elseif (auth()->id() == 1) {
+            $reports = Report::where('post_id', $post->id);
+            $reports->delete();
             $post->delete();
             return redirect()->route( 'dashboard' );
         } else {
