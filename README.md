@@ -13,15 +13,12 @@ A CRUD Application build with Laravel Breeze. The Frontend is made with Blade, T
 ---
 
 ## How to run the App
-The App is live [here](https://myforumlaravel.herokuapp.com/). You need to create an Account to post, Email Verification is not activated.
+The App is live [here](https://myforumlaravel.herokuapp.com/). You can Login with an Account.
 
 ---
 ## Planned
-1. User can report a Post
-    - User can Delete Reported Post
-    - User can Delete Report
-2. User can send and receive Personal Messages
-3. User Roles & Permissions
+1. User can send and receive Personal Messages
+2. User Roles & Permissions
 ---
 ## User Stories
 - User can create Account
@@ -32,10 +29,17 @@ The App is live [here](https://myforumlaravel.herokuapp.com/). You need to creat
 - User can Post in a Thread
     - User can Update own Posts
     - User can Delete own Posts
+
+- User can report a Post
+    - User can Delete Reported Post
+    - User can Delete Report
 ---
 
 ## Pictures
 ### App
-![index](Screenshot%20(16).png)
-![show](Screenshot%20(15).png)
-![dashboard](Screenshot%20(18).png)
+![index](ScreenshotOne.png)
+![show](ScreenshotTwo.png)
+![dashboard](ScreenshotThree.png)
+
+### Tables
+![talbes](ScreenshotFour.png)
