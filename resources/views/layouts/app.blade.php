@@ -18,7 +18,7 @@
     <!-- LinkedIn -->
     <meta property='og:title' content='Laravel Forum'/>
     <meta property='og:image' content='{{ asset("image/ForumV1.png") }}'/>
-    <meta property='og:description' content='Laravel CRUD Application created with Laravel Breeze.  The Frontend is made with Blade, TailwindCSS, and Javascript.'/>
+    <meta property='og:description' content='Laravel CRUD Application created with Laravel Breeze.'/>
     <meta property='og:url' content='https://myforumlaravel.herokuapp.com/'/>
 
 </head>
