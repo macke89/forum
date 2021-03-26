@@ -17,15 +17,22 @@
     */
 
     Route::get( '/', [ ThreadController::class, 'index' ] )->name( 'index' );
-    Route::delete( 'report/cancel/{report}', [ ReportController::class, 'cancel' ] )->name( 'report.cancel' );
-    Route::get('report/create/{post}', [ReportController::class, 'create'])->name('report.create');
 
-    Route::resource( 'thread', ThreadController::class )->except( 'index' );
-    Route::resource( 'post', PostController::class );
-    Route::resource( 'report', ReportController::class )->except( 'create' );
+
+    Route::group( [ 'middleware' => [ 'auth', 'verified' ] ], function () {
+        Route::resource( 'thread', ThreadController::class )->except( 'index' );
+        Route::resource( 'post', PostController::class );
+        Route::resource( 'report', ReportController::class )->except( 'create' );
+        Route::delete( 'report/cancel/{report}', [ ReportController::class, 'cancel' ] )->name( 'report.cancel' );
+        Route::get( 'report/create/{post}', [ ReportController::class, 'create' ] )->name( 'report.create' );
+
+        Route::get( '/dashboard', function () {
+            return view( 'dashboard' );
+        } )->name( 'dashboard' );
+    } );
 
     Route::get( '/dashboard', function () {
         return view( 'dashboard' );
-    } )->middleware( [ 'auth' ] )->name( 'dashboard' );
+    } )->name( 'dashboard' );
 
     require __DIR__ . '/auth.php';

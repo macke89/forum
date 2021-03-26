@@ -15,9 +15,9 @@
     <link rel="stylesheet" href="{{ asset('css/main.css')}}">
     @livewireStyles
 
-    <!-- LinkedIn -->
+    <!-- Social Media -->
     <meta property='og:title' content='Laravel Forum'/>
-    <meta property='og:image' content='https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80'/>
+    <meta property='og:image' content='{{ asset('images/ForumV1.png') }}'/>
     <meta property='og:description' content='Laravel CRUD Application created with Laravel Breeze.'/>
     <meta property='og:url' content='https://myforumlaravel.herokuapp.com/'/>
 
