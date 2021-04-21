@@ -1,10 +1,10 @@
 <!-- SIDEBAR -->
 <div class="flex flex-col flex-initial max-w-md m-auto mt-16 md:mt-0 md:w-2/6">
-    <div class="bg-blue-50 p-5">
+    <div class="p-5 bg-blue-50">
         <div class="flex flex-col">
         @auth()
             <!-- NEW THREAD -->
-                <a class="w-full px-4 py-2 mb-2 font-bold text-center text-white bg-blue-500 rounded hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
+                <a class="w-full px-4 py-2 mb-2 font-bold text-center text-white transition-all duration-300 transform bg-blue-500 rounded hover:bg-blue-700 hover:scale-105"
                    href="{{ route('thread.create') }}">
                     New Thread
                 </a>
@@ -13,13 +13,13 @@
             <div class="w-full mb-2 overflow-hidden border-t tab">
                 <input class="absolute opacity-0" id="tab-single-one" type="radio" name="tabs2">
                 <label
-                    class="block p-2 font-bold leading-normal text-center text-white transition-all bg-blue-500 rounded cursor-pointer hover:bg-blue-700 transition-all duration-300"
+                    class="block p-2 font-bold leading-normal text-center text-white transition-all duration-300 bg-blue-500 rounded cursor-pointer hover:bg-blue-700"
                     for="tab-single-one">
                     Most Recent
                 </label>
                 <div class="overflow-hidden leading-normal bg-white tab-content">
                     @foreach($mostRecentThreads as $thread)
-                        <div class="p-3 border-b-2 border-blue-50 flex flex-col justify-between">
+                        <div class="flex flex-col justify-between p-3 border-b-2 border-blue-50">
                             <div>{{ $thread->title }}</div>
                             <div>{{ $thread->created_at->diffForHumans() }}</div>
                         </div>
@@ -30,13 +30,13 @@
             <div class="w-full mb-10 overflow-hidden border-t tab">
                 <input class="absolute opacity-0" id="tab-popular-one" type="radio" name="tabs2">
                 <label
-                    class="block p-2 font-bold leading-normal text-center text-white transition-all bg-blue-500 rounded cursor-pointer hover:bg-blue-700 transition-all duration-300"
+                    class="block p-2 font-bold leading-normal text-center text-white transition-all duration-300 bg-blue-500 rounded cursor-pointer hover:bg-blue-700"
                     for="tab-popular-one">
                     Most Popular
                 </label>
                 <div class="overflow-hidden leading-normal bg-white tab-content">
                     @foreach($mostPopularThreads as $thread)
-                        <div class="p-3 border-b-2 border-blue-50 flex flex-row justify-between">
+                        <div class="flex flex-row justify-between p-3 border-b-2 border-blue-50">
                             <div>{{ $thread->title }}</div>
                             <div>{{ $thread->posts->count() }}</div>
                         </div>

@@ -13,6 +13,12 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css')}}">
+
+    <!-- Social Media -->
+    <meta property='og:title' content='Laravel Forum'/>
+    <meta property='og:image' content='{{ asset('images/ForumV1.png') }}'/>
+    <meta property='og:description' content='Laravel CRUD Application created with Laravel Breeze.'/>
+    <meta property='og:url' content='https://myforumlaravel.herokuapp.com/'/>
 </head>
 <body class="box-border min-h-screen bg-white flex-col flex justify-between">
 <!-- HEADER -->

@@ -23,7 +23,7 @@ services:
       - redis
       # - selenium
   # selenium:
-  #     image: 'selenium/standalone-chrome'
+  #     images: 'selenium/standalone-chrome'
   #     volumes:
   #         - '/dev/shm:/dev/shm'
   #     networks:
@@ -45,7 +45,7 @@ services:
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping" ]
   #    pgsql:
-  #        image: postgres:13
+  #        images: postgres:13
   #        ports:
   #            - '${FORWARD_DB_PORT:-5432}:5432'
   #        environment:
@@ -70,7 +70,7 @@ services:
     healthcheck:
       test: [ "CMD", "redis-cli", "ping" ]
   # memcached:
-  #     image: 'memcached:alpine'
+  #     images: 'memcached:alpine'
   #     ports:
   #         - '11211:11211'
   #     networks:
